@@ -7,6 +7,7 @@ import PostList from "./components/PostList";
 import PostFilterSearchForm from "./components/PostFilterSearchForm";
 import Clock from "./components/Clock";
 import BetterClock from "./components/BetterClock";
+import MagicColorBox from "./components/MagicColorBox";
 
 function App() {
   // const [todoList, setTodoList] = useState([
@@ -31,7 +32,7 @@ function App() {
       try {
         const response = await fetch(requestUrl);
         const responseJSON = await response.json();
-        console.log(responseJSON);
+        // console.log(responseJSON);
         const { data, pagination } = responseJSON;
         setPosts(data);
         setPagination(pagination);
@@ -42,9 +43,9 @@ function App() {
     fetchData();
     console.log("POST EFFECT");
   }, [filters]);
-  useEffect(() => {
-    console.log("TO Effect");
-  });
+  // useEffect(() => {
+  //   console.log("TO Effect");
+  // });
   const handlePaginationChange = (newPage) => {
     setFilters({
       ...filters,
@@ -74,8 +75,9 @@ function App() {
   // };
   return (
     <div className="app">
-      <Clock />
-      <BetterClock />
+      {/* <Clock /> */}
+      {/* <BetterClock /> */}
+      <MagicColorBox />
       <h1>Post List </h1>
       <PostFilterSearchForm onSubmit={handleFilterChange} />
       <PostList posts={posts} />
