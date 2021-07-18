@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import queryString from "query-string";
 import Pagination from "./components/Pagination";
 import PostList from "./components/PostList";
+import PostFilterSearchForm from "./components/PostFilterSearchForm";
 
 function App() {
   // const [todoList, setTodoList] = useState([
@@ -48,6 +49,14 @@ function App() {
       _page: newPage,
     });
   };
+  const handleFilterChange = (newFilters) => {
+    console.log("New Filters: ", newFilters);
+    setFilters({
+      ...filters,
+      _page: 1,
+      title_like: newFilters.searchTerm,
+    });
+  };
   // const handleTodoClick = (todo) => {
   //   const todoIndex = todoList.findIndex((item) => item.id === todo.id);
   //   if (todoIndex < 0) return;
@@ -64,6 +73,7 @@ function App() {
   return (
     <div className="app">
       <h1>Post List </h1>
+      <PostFilterSearchForm onSubmit={handleFilterChange} />
       <PostList posts={posts} />
       <Pagination
         pagination={pagination}
