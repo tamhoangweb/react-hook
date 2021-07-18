@@ -6,6 +6,7 @@ import Pagination from "./components/Pagination";
 import PostList from "./components/PostList";
 import PostFilterSearchForm from "./components/PostFilterSearchForm";
 import Clock from "./components/Clock";
+import BetterClock from "./components/BetterClock";
 
 function App() {
   // const [todoList, setTodoList] = useState([
@@ -71,11 +72,10 @@ function App() {
   //   newTodoList.push(newTodo);
   //   setTodoList(newTodoList);
   // };
-  const [show, setShow] = useState(true);
   return (
     <div className="app">
-      {show && <Clock />}
-      <button onClick={() => setShow(!show)}>Hide / Open Clock</button>
+      <Clock />
+      <BetterClock />
       <h1>Post List </h1>
       <PostFilterSearchForm onSubmit={handleFilterChange} />
       <PostList posts={posts} />
